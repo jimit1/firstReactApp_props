@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Authed from "./components/Authed";
+import NotAuthed from "./components/NotAuthed";
+import ListItem from "./components/ListItem";
 
 function App() {
+  // const truthy = "This is the truth";
+  // const falsy = "This is false";
+  const auth = true;
+  const arrayForFun = [1, 2, 3, 4, 5];
+  // const renderArray = () => {
+  //   return arrayForFun.map((res, id) => <li key={id}>{res}</li>);
+  // };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {auth ? <Authed /> : <NotAuthed />}
+      <ul>
+        {arrayForFun.map((num, id) => (
+          <ListItem key={id} passedNumber={num} anotherProp={num * 2} />
+        ))}
+      </ul>
     </div>
   );
 }
